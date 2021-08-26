@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 25/08/2021 19:34:06
+ Date: 25/08/2021 22:13:57
 */
 
 SET NAMES utf8mb4;
@@ -30,11 +30,8 @@ CREATE TABLE `employees`  (
 -- ----------------------------
 -- Records of employees
 -- ----------------------------
-INSERT INTO `employees` VALUES (8, 'Muhammad Ibrahim');
-INSERT INTO `employees` VALUES (9, 'Saiid Ahmed');
-INSERT INTO `employees` VALUES (10, 'Ahmed Yassen');
-INSERT INTO `employees` VALUES (11, 'Hebatullah Sabry');
-INSERT INTO `employees` VALUES (12, 'The Avengerss');
+INSERT INTO `employees` VALUES (14, 'Muhammad Ibrahim');
+INSERT INTO `employees` VALUES (15, 'Ahmed ElSayed');
 
 -- ----------------------------
 -- Table structure for shifts
@@ -52,10 +49,12 @@ CREATE TABLE `shifts`  (
 -- ----------------------------
 -- Records of shifts
 -- ----------------------------
-INSERT INTO `shifts` VALUES (1, 8, '2021-08-25', '11:00', '12:00');
-INSERT INTO `shifts` VALUES (7, 9, '2021-08-22', '06:30', '10:30');
-INSERT INTO `shifts` VALUES (13, 8, '2021-08-25', '12:30', '15:00');
-INSERT INTO `shifts` VALUES (15, 8, '2021-08-26', '16:40', '21:00');
-INSERT INTO `shifts` VALUES (16, 11, '2021-09-02', '01:30', '12:50');
+INSERT INTO `shifts` VALUES (18, 13, '2021-08-27', '11:00', '15:00');
+INSERT INTO `shifts` VALUES (19, 8, '2021-08-26', '14:00', '16:40');
+INSERT INTO `shifts` VALUES (20, 14, '2021-08-25', '21:00', '23:00');
+INSERT INTO `shifts` VALUES (22, 15, '2021-08-26', '05:00', '14:00');
+INSERT INTO `shifts` VALUES (23, 14, '2021-08-26', '14:00', '18:00');
+INSERT INTO `shifts` VALUES (24, 14, '2021-08-29', '00:30', '12:00');
+INSERT INTO `shifts` VALUES (25, 14, '2021-09-01', '12:00', '16:00');
 
 SET FOREIGN_KEY_CHECKS = 1;

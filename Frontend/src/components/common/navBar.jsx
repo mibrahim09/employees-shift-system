@@ -15,7 +15,7 @@ const MyNavBar = (props) => {
           <Nav className="me-auto">
             <CustomNavLink to="/">Shifts Table</CustomNavLink>
             <CustomNavLink to="/employees/new">New Employee</CustomNavLink>
-            <CustomNavLink to="/shifts/">New Shift</CustomNavLink>
+            <CustomNavLink to="/employees/">New Shift</CustomNavLink>
             <CustomNavLink to="/team">Team</CustomNavLink>
           </Nav>
         </Navbar.Collapse>

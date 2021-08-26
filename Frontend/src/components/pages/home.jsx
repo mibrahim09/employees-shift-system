@@ -54,7 +54,7 @@ class Home extends Component {
   }
   validateDate(date) {
     const d1 = new Date(date) // my date
-    const d2 = this.addDays(this.state.sunday, 7) // weekend
+    const d2 = this.addDays(this.state.sunday, 6) // weekend
     const sunday = this.state.sunday // weekstart
     return d1 < d2 && d1 > sunday
   }
@@ -110,9 +110,23 @@ class Home extends Component {
       </div>
     ))
   }
+  findThisWeek(shifts) {
+    var found = false
+    shifts.forEach((x, i) => {
+      if (this.validateDate(x.date)) {
+        found = true
+      }
+    })
+    return found
+  }
   render() {
-    const { data, sunday, date_offset } = this.state
+    const { sunday, date_offset } = this.state
     const end_day = this.addDays(sunday, 7)
+    const data = [...this.state.data]
+    const empToShow = data.sort((a, b) => {
+      if (a.employeeName > b.employeeName) return 1
+      return -1
+    })
     return (
       <Container>
         {end_day && (
@@ -148,18 +162,24 @@ class Home extends Component {
             <Col xs={2}>Wednesday</Col>
             <Col xs={2}>Thursday</Col>
           </Row>
-          {data.map((emp) => (
-            <Container className="border-bottom">
-              <Row className="mb-3">
-                <Col xs={2}>{emp.employeeName}</Col>
-                <Col xs={2}>{this.getHeader(emp, 'Sunday')}</Col>
-                <Col xs={2}>{this.getHeader(emp, 'Monday')}</Col>
-                <Col xs={2}>{this.getHeader(emp, 'Tuesday')}</Col>
-                <Col xs={2}>{this.getHeader(emp, 'Wednesday')}</Col>
-                <Col xs={2}>{this.getHeader(emp, 'Thursday')}</Col>
-              </Row>
-            </Container>
-          ))}
+          {empToShow
+            .filter(
+              (e) =>
+                e.employeeShifts.length != 0 &&
+                this.findThisWeek(e.employeeShifts),
+            )
+            .map((emp) => (
+              <Container className="border-bottom">
+                <Row className="mb-3">
+                  <Col xs={2}>{emp.employeeName}</Col>
+                  <Col xs={2}>{this.getHeader(emp, 'Sunday')}</Col>
+                  <Col xs={2}>{this.getHeader(emp, 'Monday')}</Col>
+                  <Col xs={2}>{this.getHeader(emp, 'Tuesday')}</Col>
+                  <Col xs={2}>{this.getHeader(emp, 'Wednesday')}</Col>
+                  <Col xs={2}>{this.getHeader(emp, 'Thursday')}</Col>
+                </Row>
+              </Container>
+            ))}
         </Container>
       </Container>
     )

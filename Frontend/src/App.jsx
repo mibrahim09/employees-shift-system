@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.min.css'
 import RegisterForm from './components/pages/registerForm'
 import ShiftsForm from './components/pages/shiftsForm'
+import Employees from './components/pages/employees'
 import Home from './components/pages/home'
 import Footer from './components/common/footer'
 import MyNavBar from './components/common/navBar'
@@ -22,11 +23,15 @@ class App extends Component {
           <main className="mt-5">
             <Switch>
               <Route path="/employees/new" component={RegisterForm}></Route>
+               <Route
+                path="/shifts/new/:id"
+                render={(props) => <ShiftsForm params={props} />}
+              ></Route>
               <Route
                 path="/shifts/:id"
                 render={({ location }) => <ShiftsForm shift={location} />}
               ></Route>
-              <Route path="/shifts/" component={ShiftsForm}></Route>
+              <Route path="/employees/" component={Employees}></Route>
               {/* <Route path="/ranks/:rankType" component={Ranks}></Route> */}
               <Route path="/" exact component={Home}></Route>
             </Switch>

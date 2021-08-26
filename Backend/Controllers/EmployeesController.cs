@@ -30,6 +30,11 @@ namespace ShiftSystem.Controllers
             _mapper = mapper;
             _config = config;
         }
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_context.Employees.ToList());
+        }
         [HttpPost]
         public IActionResult Post([FromBody] NewEmployeeDto newEmployee)
         {
